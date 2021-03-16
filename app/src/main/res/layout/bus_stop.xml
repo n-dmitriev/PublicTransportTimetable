@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.bus_stop">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/bus_stop"
+            style="@style/header"
+            android:text="@string/bus_stop" />
+
+        <AutoCompleteTextView
+            android:id="@+id/bus_stop_name"
+            style="@style/input"
+            android:hint="@string/location_entry_input" />
+
+        <EditText
+            android:id="@+id/editTextTime"
+            style="@style/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="12 : 10"
+            android:inputType="time" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bus_stop_accept"
+        android:background="#219500"
+        android:text="@string/button_accept"
+        app:backgroundTint="#219500"
+        style="@style/button" />
+
+    <Button
+        android:id="@+id/bus_stop_cancel"
+        style="@style/button"
+        android:background="#B12626"
+        android:text="@string/button_cancel"
+        app:backgroundTint="#B12626" />
+</LinearLayout>

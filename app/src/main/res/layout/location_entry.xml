@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".view.location_entry">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/route_number"
+            android:text="@string/location_entry_text"
+            style="@style/header" />
+
+
+        <AutoCompleteTextView
+            android:id="@+id/location_entry_input"
+            android:hint="@string/location_entry_input"
+            style="@style/input" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bus_stop_accept"
+        android:text="@string/button_accept"
+        style="@style/button"
+        android:background="#001495"
+        />
+</LinearLayout>

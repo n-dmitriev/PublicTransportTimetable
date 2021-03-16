@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/bus_stop">
+    <fragment
+        android:id="@+id/bus_stop"
+        android:name="com.example.publictransporttimetable.view.bus_stop"
+        android:label="bus_stop"
+        tools:layout="@layout/bus_stop" />
+    <fragment
+        android:id="@+id/location_entry"
+        android:name="com.example.publictransporttimetable.view.location_entry"
+        android:label="location_entry"
+        tools:layout="@layout/location_entry" >
+        <action
+            android:id="@+id/action_location_entry_to_routes"
+            app:destination="@id/routes" />
+    </fragment>
+    <fragment
+        android:id="@+id/route"
+        android:name="com.example.publictransporttimetable.route"
+        android:label="route"
+        tools:layout="@layout/route" >
+        <action
+            android:id="@+id/action_route_to_bus_stop"
+            app:destination="@id/bus_stop" />
+    </fragment>
+    <fragment
+        android:id="@+id/routes"
+        android:name="com.example.publictransporttimetable.view.routes"
+        android:label="routes"
+        tools:layout="@layout/routes" >
+        <action
+            android:id="@+id/action_routes_to_route"
+            app:destination="@id/route" />
+    </fragment>
+</navigation>

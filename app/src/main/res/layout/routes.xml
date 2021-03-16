@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.routes">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        style="@style/float_button"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="11sp"
+        android:layout_marginLeft="11sp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:backgroundTint="#4CAF50"
+        app:fabSize="auto" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/Colors"/>
+
+</FrameLayout>
