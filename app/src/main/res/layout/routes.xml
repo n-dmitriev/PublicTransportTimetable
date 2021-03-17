@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.routes">
+    android:orientation="vertical"
+    tools:context=".screens.routes.RoutesFragment">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        style="@style/float_button"
-        android:layout_gravity="bottom"
-        android:layout_marginStart="11sp"
-        android:layout_marginLeft="11sp"
-        android:src="@drawable/ic_baseline_add_24"
-        app:backgroundTint="#4CAF50"
-        app:fabSize="auto" />
-
-    <ListView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/location_entry"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/Colors"/>
+        android:drawableRight="@drawable/ic_baseline_edit_24"
+        android:text="@string/location_entry_input"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:backgroundTint="#FFFFFF" />
 
-</FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            style="@style/float_button"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="11sp"
+            android:layout_marginLeft="11sp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:backgroundTint="#4CAF50"
+            app:fabSize="auto" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/Colors" />
+
+    </FrameLayout>
+</LinearLayout>

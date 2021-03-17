@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".screens.location_entry">
+    tools:context=".screens.locationentry.LocationEntryFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/route_number"
-            android:text="@string/location_entry_text"
-            style="@style/header" />
+            style="@style/header"
+            android:text="@string/location_entry_text" />
 
 
         <AutoCompleteTextView
             android:id="@+id/location_entry_input"
-            android:hint="@string/location_entry_input"
-            style="@style/input" />
+            style="@style/input"
+            android:hint="@string/location_entry_input" />
     </LinearLayout>
 
     <Button
         android:id="@+id/bus_stop_accept"
-        android:text="@string/button_accept"
         style="@style/button"
         android:background="#001495"
-        />
+        android:text="@string/button_accept" />
+
+    <Button
+        android:id="@+id/bus_stop_skip"
+        style="@style/button"
+        android:background="#1CB800"
+        android:text="@string/button_skip"
+        app:backgroundTint="#1CB800" />
 </LinearLayout>

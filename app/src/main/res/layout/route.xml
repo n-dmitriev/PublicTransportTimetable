@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".route">
+    tools:context=".screens.route.RouteFragment">
 
     <TextView
         android:id="@+id/route_number"

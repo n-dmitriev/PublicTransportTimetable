@@ -8,6 +8,7 @@
     <string name="button_accept">Accept</string>
     <string name="button_cancel">Cancel</string>
     <string name="bus_stop_delete">Remove from route</string>
+    <string name="button_skip">Skip</string>
     <string-array name="Colors">
         <item name="color">Red</item>
         <item name="color">Orange</item>
