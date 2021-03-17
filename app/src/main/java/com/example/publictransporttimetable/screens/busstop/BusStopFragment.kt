@@ -1,4 +1,4 @@
-package com.example.publictransporttimetable.view
+package com.example.publictransporttimetable.screens.busstop
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,10 +14,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [bus_stop.newInstance] factory method to
+ * Use the [BusStopFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class bus_stop : Fragment() {
+class BusStopFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -50,7 +50,7 @@ class bus_stop : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            bus_stop().apply {
+            BusStopFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -6,12 +6,12 @@
     app:startDestination="@id/bus_stop">
     <fragment
         android:id="@+id/bus_stop"
-        android:name="com.example.publictransporttimetable.view.bus_stop"
+        android:name="com.example.publictransporttimetable.screens.bus_stop"
         android:label="bus_stop"
         tools:layout="@layout/bus_stop" />
     <fragment
         android:id="@+id/location_entry"
-        android:name="com.example.publictransporttimetable.view.location_entry"
+        android:name="com.example.publictransporttimetable.screens.location_entry"
         android:label="location_entry"
         tools:layout="@layout/location_entry" >
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/routes"
-        android:name="com.example.publictransporttimetable.view.routes"
+        android:name="com.example.publictransporttimetable.screens.routes"
         android:label="routes"
         tools:layout="@layout/routes" >
         <action
