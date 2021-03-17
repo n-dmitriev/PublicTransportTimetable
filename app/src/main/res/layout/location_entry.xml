@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".screens.locationentry.LocationEntryFragment">
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/route_number"
-            style="@style/header"
-            android:text="@string/location_entry_text" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/route_number"
+                style="@style/header"
+                android:text="@string/location_entry_text" />
 
 
-        <AutoCompleteTextView
-            android:id="@+id/location_entry_input"
-            style="@style/input"
-            android:hint="@string/location_entry_input" />
+            <AutoCompleteTextView
+                android:id="@+id/location_entry_input"
+                style="@style/input"
+                android:hint="@string/location_entry_input" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bus_stop_accept"
+            style="@style/button"
+            android:background="#2196F3"
+            android:text="@string/button_accept"
+            app:backgroundTint="#3F51B5" />
+
+        <Button
+            android:id="@+id/bus_stop_skip"
+            style="@style/button"
+            android:background="#219500"
+            android:text="@string/button_skip"
+            app:backgroundTint="#219500" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/bus_stop_accept"
-        style="@style/button"
-        android:background="#2196F3"
-        android:text="@string/button_accept"
-        app:backgroundTint="#3F51B5" />
-
-    <Button
-        android:id="@+id/bus_stop_skip"
-        style="@style/button"
-        android:background="#219500"
-        android:text="@string/button_skip"
-        app:backgroundTint="#219500" />
-</LinearLayout>
+</layout>

@@ -19,7 +19,7 @@ import com.example.publictransporttimetable.model.entity.Route
 abstract class TimeTableDatabase : RoomDatabase() {
 
     abstract fun getStopDatabaseDao(): BusStopDao
-    abstract fun gePointDatabaseDao(): PointDao
+    abstract fun getPointDatabaseDao(): PointDao
     abstract fun getRouteDatabaseDao(): RouteDao
 
 
