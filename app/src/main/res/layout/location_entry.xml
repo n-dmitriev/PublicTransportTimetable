@@ -29,13 +29,14 @@
     <Button
         android:id="@+id/bus_stop_accept"
         style="@style/button"
-        android:background="#001495"
-        android:text="@string/button_accept" />
+        android:background="#2196F3"
+        android:text="@string/button_accept"
+        app:backgroundTint="#3F51B5" />
 
     <Button
         android:id="@+id/bus_stop_skip"
         style="@style/button"
-        android:background="#1CB800"
+        android:background="#219500"
         android:text="@string/button_skip"
-        app:backgroundTint="#1CB800" />
+        app:backgroundTint="#219500" />
 </LinearLayout>
