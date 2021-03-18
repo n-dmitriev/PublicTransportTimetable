@@ -24,4 +24,6 @@ interface BusStopDao {
 
     @Query("SELECT * FROM bus_stops ORDER BY id DESC LIMIT 1")
     fun getBusStopById(): BusStop?
+
+
 }

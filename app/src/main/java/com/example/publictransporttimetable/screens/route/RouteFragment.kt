@@ -18,12 +18,15 @@ import com.example.publictransporttimetable.model.TimeTableDatabase
 class RouteFragment : Fragment() {
     private lateinit var viewModel: RouteViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         // Get a reference to the binding object and inflate the fragment views.
         val binding: RouteBinding = DataBindingUtil.inflate(
-            inflater, R.layout.route, container, false)
+            inflater, R.layout.route, container, false
+        )
 
         val application = requireNotNull(this.activity).application
         val pointDao = TimeTableDatabase.getInstance(application).getPointDatabaseDao()
@@ -36,6 +39,19 @@ class RouteFragment : Fragment() {
 
         val adapter = RouteAdapter()
         binding.pointsList.adapter = adapter
+
+//        viewModel.nights.observe(viewLifecycleOwner, Observer { nights ->
+//            if (nights != null)
+//                adapter.data = nights
+//        })
+
+        binding.addBusStop.setOnClickListener {
+
+        }
+
+        binding.deleteRoute.setOnClickListener {
+
+        }
 
 
         return binding.root

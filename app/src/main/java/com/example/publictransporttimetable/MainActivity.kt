@@ -11,18 +11,20 @@ import com.example.publictransporttimetable.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        @Suppress("UNUSED_VARIABLE")
-        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(
-            this,
-            R.layout.activity_main
-        )
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.myNavHostFragment)
-        navController = navHostFragment?.findNavController()!!
 
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        setContentView(R.layout.activity_main)
+
+//        @Suppress("UNUSED_VARIABLE")
+//        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(
+//            this,
+//            R.layout.activity_main
+//        )
+//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.myNavHostFragment)
+//        navController = navHostFragment?.findNavController()!!
+//
+//        NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
