@@ -13,8 +13,8 @@ data class Point(
     @ColumnInfo(name = "route_id")
     var routeId: Long = 0L,
 
-    @ColumnInfo(name = "stop_id")
-    var stopId: Long = 0L,
+    @ColumnInfo(name = "stop_name")
+    var stopName: String = "",
 
     @ColumnInfo(name = "time")
     var time: String = "",

@@ -15,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.publictransporttimetable.databinding.LocationEntryBinding
 import com.example.publictransporttimetable.model.TimeTableDatabase
 
-class RouteFragment : Fragment() {
+class LocationEntryFragment : Fragment() {
     private lateinit var viewModel: LocationEntryViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -26,9 +26,8 @@ class RouteFragment : Fragment() {
             inflater, R.layout.route, container, false)
 
         val application = requireNotNull(this.activity).application
-        val busStopDao = TimeTableDatabase.getInstance(application).getStopDatabaseDao()
 
-        val viewModelFactory = LocationViewModelFactory(busStopDao, application)
+        val viewModelFactory = LocationViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(LocationEntryViewModel::class.java)
 

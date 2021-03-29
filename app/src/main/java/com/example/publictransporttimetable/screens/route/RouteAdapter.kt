@@ -15,7 +15,7 @@ class PointViewHolder private constructor(itemView: View) : RecyclerView.ViewHol
     private val deleteItem: ImageView = itemView.findViewById(R.id.delete_item)
 
     fun bind(item: Point) {
-        name.text = item.stopId.toString()
+        name.text = item.stopName.toString()
         description.text = item.time
     }
 

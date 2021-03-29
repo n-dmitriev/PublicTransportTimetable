@@ -21,19 +21,21 @@ class RouteFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // Get a reference to the binding object and inflate the fragment views.
         val binding: RouteBinding = DataBindingUtil.inflate(
             inflater, R.layout.route, container, false
         )
 
+        val args = RouteFragmentArgs.fromBundle(requireArguments())
+
         val application = requireNotNull(this.activity).application
         val pointDao = TimeTableDatabase.getInstance(application).getPointDatabaseDao()
-        val busStopDao = TimeTableDatabase.getInstance(application).getStopDatabaseDao()
         val routeDao = TimeTableDatabase.getInstance(application).getRouteDatabaseDao()
 
-        val viewModelFactory = RouteViewModelFactory(pointDao, busStopDao, routeDao, application)
+        val viewModelFactory =
+            RouteViewModelFactory(args.routeId, args.isEdit, pointDao, routeDao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(RouteViewModel::class.java)
 

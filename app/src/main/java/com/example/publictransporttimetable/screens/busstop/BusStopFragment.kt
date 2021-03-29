@@ -27,9 +27,8 @@ class BusStopFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val pointDao = TimeTableDatabase.getInstance(application).getPointDatabaseDao()
-        val busStopDao = TimeTableDatabase.getInstance(application).getStopDatabaseDao()
 
-        val viewModelFactory = BusStopViewModelFactory(pointDao, busStopDao, application)
+        val viewModelFactory = BusStopViewModelFactory(pointDao, application)
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(BusStopViewModel::class.java)
 

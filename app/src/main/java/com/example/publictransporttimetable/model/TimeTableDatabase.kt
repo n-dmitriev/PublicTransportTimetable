@@ -4,21 +4,18 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.publictransporttimetable.model.dao.BusStopDao
 import com.example.publictransporttimetable.model.dao.PointDao
 import com.example.publictransporttimetable.model.dao.RouteDao
-import com.example.publictransporttimetable.model.entity.BusStop
 import com.example.publictransporttimetable.model.entity.Point
 import com.example.publictransporttimetable.model.entity.Route
 
 @Database(
-    entities = [BusStop::class, Point::class, Route::class],
+    entities = [Point::class, Route::class],
     version = 1,
     exportSchema = false
 )
 abstract class TimeTableDatabase : RoomDatabase() {
 
-    abstract fun getStopDatabaseDao(): BusStopDao
     abstract fun getPointDatabaseDao(): PointDao
     abstract fun getRouteDatabaseDao(): RouteDao
 

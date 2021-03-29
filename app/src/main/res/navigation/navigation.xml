@@ -3,19 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/bus_stop">
+    app:startDestination="@id/routes">
     <fragment
         android:id="@+id/bus_stop"
-        android:name="com.example.publictransporttimetable.screens.bus_stop"
+        android:name="com.example.publictransporttimetable.screens.busstop.BusStopFragment"
         android:label="bus_stop"
         tools:layout="@layout/bus_stop" >
         <action
             android:id="@+id/action_bus_stop_to_route"
             app:destination="@id/route" />
+        <argument android:name="point_id" />
     </fragment>
     <fragment
         android:id="@+id/location_entry"
-        android:name="com.example.publictransporttimetable.screens.location_entry"
+        android:name="com.example.publictransporttimetable.screens.locationentry.LocationEntryFragment"
         android:label="location_entry"
         tools:layout="@layout/location_entry" >
         <action
@@ -24,16 +25,22 @@
     </fragment>
     <fragment
         android:id="@+id/route"
-        android:name="com.example.publictransporttimetable.route"
+        android:name="com.example.publictransporttimetable.screens.route.RouteFragment"
         android:label="route"
         tools:layout="@layout/route" >
         <action
             android:id="@+id/action_route_to_bus_stop"
             app:destination="@id/bus_stop" />
+        <argument
+            android:name="routeId"
+            app:argType="long" />
+        <argument
+            android:name="isEdit"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/routes"
-        android:name="com.example.publictransporttimetable.screens.routes"
+        android:name="com.example.publictransporttimetable.screens.routes.RoutesFragment"
         android:label="routes"
         tools:layout="@layout/routes" >
         <action

@@ -20,7 +20,7 @@ interface RouteDao {
     fun get(key: Long): Route?
 
     @Query("SELECT * FROM routes ORDER BY id DESC")
-    fun getAllRoutes(): LiveData<List<Route>>
+    fun getAllRoutes(): MutableList<Route>
 
     @Query("SELECT * FROM routes ORDER BY id DESC LIMIT 1")
     fun getRouteById(): Route?

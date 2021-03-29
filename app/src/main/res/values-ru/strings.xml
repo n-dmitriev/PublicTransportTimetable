@@ -3,11 +3,12 @@
     <string name="app_name">Расписание общественного транспорта</string>
     <string name="location_entry_text">Укажите вашу остановку</string>
     <string name="location_entry_input">Остановка союзная</string>
-    <string name="route_number">Маршрут №</string>
+    <string name="route_number">Маршрут</string>
     <string name="route_number_input">22с</string>
     <string name="bus_stop">Автобусная остановка</string>
     <string name="button_accept">Применить</string>
     <string name="button_cancel">Отменить</string>
     <string name="bus_stop_delete">Удалить из маршрута</string>
     <string name="button_skip">Пропустить</string>
+    <string name="button_save">Сохранить имя</string>
 </resources>
