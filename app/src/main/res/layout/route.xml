@@ -22,19 +22,25 @@
             <EditText
                 android:id="@+id/route_number_input"
                 style="@style/input"
-                android:hint="@string/route_number_input"
-                android:importantForAutofill="no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:hint="@string/route_number_input"
+                android:importantForAutofill="no"
                 tools:ignore="TextFields" />
 
-            <Button
-                android:id="@+id/edit_name_handler"
-                style="@style/button"
-                android:background="#219500"
-                android:text="@string/button_save"
-                app:backgroundTint="#219500" />
+            <Spinner
+                android:id="@+id/bus_types_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/bus_types" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/edit_name_handler"
+            style="@style/button"
+            android:background="#219500"
+            android:text="@string/button_save"
+            app:backgroundTint="#219500" />
 
         <FrameLayout
             android:layout_width="match_parent"

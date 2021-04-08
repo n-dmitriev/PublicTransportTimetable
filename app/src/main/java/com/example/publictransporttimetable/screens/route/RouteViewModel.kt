@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.example.publictransporttimetable.model.dao.PointDao
 import com.example.publictransporttimetable.model.dao.RouteDao
+import com.example.publictransporttimetable.model.entity.Point
 import com.example.publictransporttimetable.model.entity.Route
 import kotlinx.coroutines.*
 
@@ -20,46 +21,103 @@ class RouteViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var _point = MutableLiveData<MutableList<PointDao>>()
-    val point: LiveData<MutableList<PointDao>> get() = _point
+    private var _point = MutableLiveData<MutableList<Point>>()
+    val point: LiveData<MutableList<Point>> get() = _point
 
-    private var _route = MutableLiveData<MutableList<Route>>()
-    val route: LiveData<MutableList<Route>> get() = _route
+    private var _route = MutableLiveData<Route?>()
+    val route: LiveData<Route?> get() = _route
 
     init {
-        getRoute()
-    }
-
-    private fun getRoute() {
-        uiScope.launch {
-            _route.value = getRouteFromDB()
+        if (isEdit && routeId != -1L) {
+            getRoute()
+            getPoints()
+        } else {
+            _point.value = mutableListOf()
+            _route.value = null
         }
     }
 
-    private suspend fun getRouteFromDB(): MutableList<Route> {
+    fun updateRoute(name: String) {
+        uiScope.launch {
+            if (_route.value == null) {
+                val r = Route(0L, name)
+                insertRoute(r)
+                _route.value = r
+            } else {
+                val r = Route(_route.value!!.id, name)
+                updateRoute(r)
+                _route.value = r
+            }
+        }
+    }
+
+    private suspend fun updateRoute(route: Route) {
+        withContext(Dispatchers.IO) {
+            routeDao.update(route)
+        }
+    }
+
+    private suspend fun insertRoute(route: Route) {
+        withContext(Dispatchers.IO) {
+            routeDao.insert(route)
+        }
+    }
+
+    private fun getPoints() {
+        uiScope.launch {
+            _point.value = getPointsFromDB(routeId)
+        }
+    }
+
+    private suspend fun getPointsFromDB(routeId: Long): MutableList<Point> {
         return withContext(Dispatchers.IO) {
-            val gr = routeDao.getAllRoutes()
+            val gr = pointDao.getPointsByRouteId(routeId)
             gr
         }
     }
 
-    fun deleteRoute(index: Int) {
+    private fun getRoute() {
         uiScope.launch {
-            val route = _route.value!!.removeAt(index)
-            delete(route)
-            _route.value = _route.value
+            _route.value = getRouteFromDB(routeId)
         }
     }
 
-    private suspend fun delete(route: Route) {
+    private suspend fun getRouteFromDB(routeId: Long): Route {
+        return withContext(Dispatchers.IO) {
+            val gr = routeDao.getRouteById(routeId)
+            gr
+        }
+    }
+
+    fun deleteRoute() {
+        uiScope.launch {
+            if (_route.value != null) {
+                val route = _route.value!!
+                deleteR(route)
+                _route.value = null
+            }
+        }
+    }
+
+    private suspend fun deleteR(route: Route) {
         withContext(Dispatchers.IO) {
             routeDao.delete(route)
         }
     }
 
-    private suspend fun addRouteInDB(route: Route) {
+    fun deletePoint(i: Int) {
+        uiScope.launch {
+            if (_point.value != null) {
+                val point = _point.value!!
+                deleteP(point)
+                _point.value = null
+            }
+        }
+    }
+
+    private suspend fun deleteP(point: MutableList<Point>) {
         withContext(Dispatchers.IO) {
-            routeDao.insert(route)
+            pointDao.delete(point)
         }
     }
 

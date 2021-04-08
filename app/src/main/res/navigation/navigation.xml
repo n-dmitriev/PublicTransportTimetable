@@ -9,10 +9,11 @@
         android:name="com.example.publictransporttimetable.screens.busstop.BusStopFragment"
         android:label="bus_stop"
         tools:layout="@layout/bus_stop" >
-        <action
-            android:id="@+id/action_bus_stop_to_route"
-            app:destination="@id/route" />
-        <argument android:name="point_id" />
+        <argument android:name="point_id"
+            app:argType="long" />
+        <argument
+            android:name="isEdit"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/location_entry"
@@ -22,6 +23,9 @@
         <action
             android:id="@+id/action_location_entry_to_routes"
             app:destination="@id/routes" />
+        <argument
+            android:name="location"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/route"
@@ -46,8 +50,8 @@
         <action
             android:id="@+id/action_routes_to_route"
             app:destination="@id/route" />
-        <action
-            android:id="@+id/action_routes_to_location_entry"
-            app:destination="@id/location_entry" />
+        <argument
+            android:name="location"
+            app:argType="string" />
     </fragment>
 </navigation>

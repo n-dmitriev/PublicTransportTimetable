@@ -9,29 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.publictransporttimetable.R
 import com.example.publictransporttimetable.model.entity.Point
 
-class PointViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    private val name: TextView = itemView.findViewById(R.id.name)
-    private val description: TextView = itemView.findViewById(R.id.description)
-    private val deleteItem: ImageView = itemView.findViewById(R.id.delete_item)
+class RouteAdapter(
+    val deleteCallback: (index: Int) -> Unit,
+    val goToBusStopСallback: (index: Int) -> Unit
+) : RecyclerView.Adapter<RouteAdapter.PointViewHolder>() {
 
-    fun bind(item: Point) {
-        name.text = item.stopName.toString()
-        description.text = item.time
-    }
-
-    companion object {
-        fun from(parent: ViewGroup): PointViewHolder {
-            val layoutInflater = LayoutInflater.from(parent.context)
-            val view = layoutInflater
-                    .inflate(R.layout.list_item, parent, false)
-            return PointViewHolder(view)
-        }
-    }
-}
-
-class RouteAdapter : RecyclerView.Adapter<PointViewHolder>() {
-
-    private var data = listOf<Point>()
+    var data = listOf<Point>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -44,7 +27,33 @@ class RouteAdapter : RecyclerView.Adapter<PointViewHolder>() {
         holder.bind(item)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PointViewHolder {
-        return PointViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PointViewHolder =
+        PointViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.list_item,
+                parent,
+                false
+            )
+        )
+
+
+    inner class PointViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
+        private val name: TextView = itemView.findViewById(R.id.name)
+        private val description: TextView = itemView.findViewById(R.id.description)
+        private val deleteItem: ImageView = itemView.findViewById(R.id.delete_item)
+        private val busStopItem: androidx.constraintlayout.widget.ConstraintLayout =
+            itemView.findViewById(R.id.item_body)
+
+        fun bind(item: Point) {
+            name.text = item.stopName
+            description.text = item.time
+            deleteItem.setOnClickListener {
+                deleteCallback(adapterPosition)
+            }
+            busStopItem.setOnClickListener {
+                goToBusStopСallback(adapterPosition)
+            }
+        }
     }
 }

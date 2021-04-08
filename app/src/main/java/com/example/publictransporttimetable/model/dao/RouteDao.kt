@@ -22,6 +22,6 @@ interface RouteDao {
     @Query("SELECT * FROM routes ORDER BY id DESC")
     fun getAllRoutes(): MutableList<Route>
 
-    @Query("SELECT * FROM routes ORDER BY id DESC LIMIT 1")
-    fun getRouteById(): Route?
+    @Query("SELECT * FROM routes ORDER BY :id DESC LIMIT 1")
+    fun getRouteById(id: Long): Route
 }

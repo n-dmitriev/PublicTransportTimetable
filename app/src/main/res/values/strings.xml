@@ -9,5 +9,12 @@
     <string name="button_cancel">Cancel</string>
     <string name="bus_stop_delete">Remove from route</string>
     <string name="button_skip">Skip</string>
-    <string name="button_save">Save name</string>
+    <string name="button_save">Save</string>
+    <string name="empty_name">Empty name!</string>
+    <string-array name="bus_types">
+        <item>Bus</item>
+        <item>Trolleybus</item>
+        <item>Tram</item>
+        <item>Route taxi</item>
+    </string-array>
 </resources>

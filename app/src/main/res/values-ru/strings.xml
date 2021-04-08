@@ -10,5 +10,12 @@
     <string name="button_cancel">Отменить</string>
     <string name="bus_stop_delete">Удалить из маршрута</string>
     <string name="button_skip">Пропустить</string>
-    <string name="button_save">Сохранить имя</string>
+    <string name="button_save">Сохранить</string>
+    <string name="empty_name">Пустое имя!</string>, , , .
+    <string-array name="bus_types">
+        <item>Автобус</item>
+        <item>Троллейбус</item>
+        <item>Трамвай</item>
+        <item>Маршрутка</item>
+    </string-array>
 </resources>

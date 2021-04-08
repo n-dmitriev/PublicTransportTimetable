@@ -33,14 +33,14 @@ class RoutesFragment : Fragment() {
         }, goToRouteCallback = { i ->
             this.findNavController().navigate(
                 RoutesFragmentDirections
-                    .actionRoutesToRoute(viewModel.route.value!![i].id, false)
+                    .actionRoutesToRoute(viewModel.route.value!![i].id, true)
             )
         })
 
         rootView.findViewById<FloatingActionButton>(R.id.create_route).setOnClickListener {
             this.findNavController().navigate(
                 RoutesFragmentDirections
-                    .actionRoutesToRoute(-1, true)
+                    .actionRoutesToRoute(-1, false)
             )
         }
 
