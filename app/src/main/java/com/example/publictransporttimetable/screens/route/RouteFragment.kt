@@ -43,14 +43,14 @@ class RouteFragment : Fragment() {
         }, goToBusStopСallback = { i ->
             this.findNavController().navigate(
                 RouteFragmentDirections
-                    .actionRouteToBusStop(viewModel.point.value!![i].id, true)
+                    .actionRouteToBusStop(viewModel.point.value!![i].id, true, args.routeId)
             )
         })
 
         binding.addBusStop.setOnClickListener {
             this.findNavController().navigate(
                 RouteFragmentDirections
-                    .actionRouteToBusStop(-1L, false)
+                    .actionRouteToBusStop(-1L, false, args.routeId)
             )
         }
 
@@ -67,7 +67,9 @@ class RouteFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                viewModel.updateRoute(binding.routeNumberInput.text.toString())
+                viewModel.updateRoute(binding.routeNumberInput.text.toString(),
+                    binding.busTypesSpinner.selectedItem.toString()
+                )
             }
         }
 
@@ -79,8 +81,6 @@ class RouteFragment : Fragment() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.busTypesSpinner.adapter = adapter
         }
-
-
 
         viewModel.route.observe(this.requireActivity(), { route ->
             if (route != null) {

@@ -19,6 +19,6 @@ data class Point(
     @ColumnInfo(name = "time")
     var time: String = "",
 
-    @ColumnInfo(name = "number")
-    var number: Int = 0
+//    @ColumnInfo(name = "number")
+//    var number: Int = 0
 )

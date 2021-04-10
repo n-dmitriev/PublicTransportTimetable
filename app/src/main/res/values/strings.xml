@@ -17,4 +17,5 @@
         <item>Tram</item>
         <item>Route taxi</item>
     </string-array>
+    <string name="empty_time">Empty time!</string>
 </resources>

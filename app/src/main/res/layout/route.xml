@@ -38,7 +38,6 @@
         <Button
             android:id="@+id/edit_name_handler"
             style="@style/button"
-            android:background="#219500"
             android:text="@string/button_save"
             app:backgroundTint="#219500" />
 

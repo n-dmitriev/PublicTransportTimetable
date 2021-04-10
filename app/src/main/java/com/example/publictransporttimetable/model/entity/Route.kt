@@ -14,5 +14,5 @@ data class Route(
         var name: String = "",
 
         @ColumnInfo(name = "type")
-        var type: Int = 0
+        var type: String = ""
 )

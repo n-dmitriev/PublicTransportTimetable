@@ -22,9 +22,10 @@
                 android:text="@string/location_entry_text" />
 
 
-            <AutoCompleteTextView
+            <EditText
                 android:id="@+id/location_entry_input"
                 style="@style/input"
+                android:importantForAutofill="no"
                 android:hint="@string/location_entry_input" />
         </LinearLayout>
 

@@ -20,19 +20,21 @@
                 style="@style/header"
                 android:text="@string/bus_stop" />
 
-            <AutoCompleteTextView
-                android:id="@+id/bus_stop_name"
+            <EditText
+                android:id="@+id/bus_stop_name_input"
                 style="@style/input"
-                android:hint="@string/location_entry_input" />
+                android:hint="@string/location_entry_input"
+                android:importantForAutofill="no"/>
 
             <EditText
-                android:id="@+id/editTextTime"
+                android:id="@+id/bus_stop_time_input"
                 style="@style/input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="12 : 10"
-                android:inputType="time" />
+                android:inputType="time"
+                android:importantForAutofill="no" />
         </LinearLayout>
 
         <Button

@@ -18,4 +18,5 @@
         <item>Трамвай</item>
         <item>Маршрутка</item>
     </string-array>
+    <string name="empty_time">Пустое время!</string>
 </resources>

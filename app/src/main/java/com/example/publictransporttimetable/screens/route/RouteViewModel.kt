@@ -37,14 +37,14 @@ class RouteViewModel(
         }
     }
 
-    fun updateRoute(name: String) {
+    fun updateRoute(name: String, type: String) {
         uiScope.launch {
             if (_route.value == null) {
-                val r = Route(0L, name)
+                val r = Route(0L, name, type)
                 insertRoute(r)
                 _route.value = r
             } else {
-                val r = Route(_route.value!!.id, name)
+                val r = Route(_route.value!!.id, name, type)
                 updateRoute(r)
                 _route.value = r
             }

@@ -9,11 +9,13 @@
         android:name="com.example.publictransporttimetable.screens.busstop.BusStopFragment"
         android:label="bus_stop"
         tools:layout="@layout/bus_stop" >
-        <argument android:name="point_id"
+        <argument android:name="pointId"
             app:argType="long" />
         <argument
             android:name="isEdit"
             app:argType="boolean" />
+        <argument android:name="routeId"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/location_entry"
