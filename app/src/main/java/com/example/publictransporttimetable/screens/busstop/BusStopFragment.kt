@@ -23,7 +23,7 @@ class BusStopFragment : Fragment() {
 
         // Get a reference to the binding object and inflate the fragment views.
         val binding: BusStopBinding = DataBindingUtil.inflate(
-            inflater, R.layout.route, container, false
+            inflater, R.layout.bus_stop, container, false
         )
 
         val application = requireNotNull(this.activity).application
@@ -37,24 +37,28 @@ class BusStopFragment : Fragment() {
 
 
         binding.busStopAccept.setOnClickListener {
-            if (binding.busStopNameInput.text.isEmpty()) {
-                Toast.makeText(
-                    this.requireContext(),
-                    getText(R.string.empty_name),
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else if (binding.busStopTimeInput.text.isEmpty()) {
-                Toast.makeText(
-                    this.requireContext(),
-                    getText(R.string.empty_time),
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                viewModel.updatePoint(
-                    binding.busStopNameInput.text.toString(),
-                    binding.busStopTimeInput.text.toString()
-                )
-                this.findNavController().popBackStack()
+            when {
+                binding.busStopNameInput.text.isEmpty() -> {
+                    Toast.makeText(
+                        this.requireContext(),
+                        getText(R.string.empty_name),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                binding.busStopTimeInput.text.isEmpty() -> {
+                    Toast.makeText(
+                        this.requireContext(),
+                        getText(R.string.empty_time),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                else -> {
+                    viewModel.updatePoint(
+                        binding.busStopNameInput.text.toString(),
+                        binding.busStopTimeInput.text.toString()
+                    )
+                    this.findNavController().popBackStack()
+                }
             }
         }
 
