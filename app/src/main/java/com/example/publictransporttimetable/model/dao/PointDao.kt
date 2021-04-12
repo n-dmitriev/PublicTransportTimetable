@@ -14,15 +14,12 @@ interface PointDao {
     fun update(point: Point)
 
     @Delete
-    fun delete(point: MutableList<Point>)
-
-    @Query("SELECT * FROM points WHERE id = :key")
-    fun get(key: Long): Point?
+    fun delete(point: Point)
 
     @Query("SELECT * FROM points ORDER BY id DESC")
     fun getAllPoints(): LiveData<List<Point>>
 
-    @Query("SELECT * FROM points ORDER BY :id DESC LIMIT 1")
+    @Query("SELECT * FROM points WHERE id = :id")
     fun getPointById(id: Long): Point?
 
     @Query("SELECT * FROM points WHERE route_id == :id")

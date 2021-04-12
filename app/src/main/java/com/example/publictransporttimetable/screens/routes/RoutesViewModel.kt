@@ -1,6 +1,8 @@
 package com.example.publictransporttimetable.screens.routes
 
 import android.app.Application
+import android.content.ContentValues
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,17 +18,17 @@ class RoutesViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var _route = MutableLiveData<MutableList<Route>>()
+    private var _routes = MutableLiveData<MutableList<Route>>()
 
-    val route: LiveData<MutableList<Route>> get() = _route
+    val route: LiveData<MutableList<Route>> get() = _routes
 
     init {
         getRoutes()
     }
 
-    private fun getRoutes() {
+    fun getRoutes() {
         uiScope.launch {
-            _route.value = getRouteFromDB()
+            _routes.value = getRouteFromDB().reversed().toMutableList()
         }
     }
 
@@ -39,9 +41,9 @@ class RoutesViewModel(
 
     fun deleteRoute(index: Int) {
         uiScope.launch {
-            val route = _route.value!!.removeAt(index)
+            val route = _routes.value!!.removeAt(index)
             delete(route)
-            _route.value = _route.value
+            _routes.value = _routes.value
         }
     }
 

@@ -18,18 +18,6 @@
             app:argType="long" />
     </fragment>
     <fragment
-        android:id="@+id/location_entry"
-        android:name="com.example.publictransporttimetable.screens.locationentry.LocationEntryFragment"
-        android:label="location_entry"
-        tools:layout="@layout/location_entry" >
-        <action
-            android:id="@+id/action_location_entry_to_routes"
-            app:destination="@id/routes" />
-        <argument
-            android:name="location"
-            app:argType="string" />
-    </fragment>
-    <fragment
         android:id="@+id/route"
         android:name="com.example.publictransporttimetable.screens.route.RouteFragment"
         android:label="route"

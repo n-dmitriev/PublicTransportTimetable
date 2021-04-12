@@ -19,4 +19,9 @@
         <item>Маршрутка</item>
     </string-array>
     <string name="empty_time">Пустое время!</string>
+    <string name="sucess_delete_route">Маршрут успешно удален!</string>
+    <string name="success_delete_point">Остановка успешно удалена!</string>
+    <string name="success_create_route">Маршрут успешно создан!</string>
+    <string name="sucess_create_point">Остановка успешно создана!</string>
+    <string name="success_edit_route">Маршрут успешно отредактирован!</string>
 </resources>

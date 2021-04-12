@@ -21,20 +21,24 @@ class RouteViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var _point = MutableLiveData<MutableList<Point>>()
-    val point: LiveData<MutableList<Point>> get() = _point
+    private var _points = MutableLiveData<MutableList<Point>>()
+    val points: LiveData<MutableList<Point>> get() = _points
 
     private var _route = MutableLiveData<Route?>()
     val route: LiveData<Route?> get() = _route
 
     init {
-        if (isEdit && routeId != -1L) {
-            getRoute()
-            getPoints()
+        if (isEdit || routeId != -1L) {
+            updateData()
         } else {
-            _point.value = mutableListOf()
+            _points.value = mutableListOf()
             _route.value = null
         }
+    }
+
+    fun updateData() {
+        getRoute()
+        getPoints()
     }
 
     fun updateRoute(name: String, type: String) {
@@ -43,6 +47,7 @@ class RouteViewModel(
                 val r = Route(0L, name, type)
                 insertRoute(r)
                 _route.value = r
+
             } else {
                 val r = Route(_route.value!!.id, name, type)
                 updateRoute(r)
@@ -65,7 +70,7 @@ class RouteViewModel(
 
     private fun getPoints() {
         uiScope.launch {
-            _point.value = getPointsFromDB(routeId)
+            _points.value = getPointsFromDB(routeId).reversed().toMutableList()
         }
     }
 
@@ -107,15 +112,13 @@ class RouteViewModel(
 
     fun deletePoint(i: Int) {
         uiScope.launch {
-            if (_point.value != null) {
-                val point = _point.value!!
-                deleteP(point)
-                _point.value = null
-            }
+            val point = _points.value!!.removeAt(i)
+            deleteP(point)
+            _points.value = _points.value
         }
     }
 
-    private suspend fun deleteP(point: MutableList<Point>) {
+    private suspend fun deleteP(point: Point) {
         withContext(Dispatchers.IO) {
             pointDao.delete(point)
         }

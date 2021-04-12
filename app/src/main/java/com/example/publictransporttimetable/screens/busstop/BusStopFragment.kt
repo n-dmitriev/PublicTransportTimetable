@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.publictransporttimetable.R
 import com.example.publictransporttimetable.databinding.BusStopBinding
 import com.example.publictransporttimetable.model.TimeTableDatabase
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class BusStopFragment : Fragment() {
     private lateinit var viewModel: BusStopViewModel
@@ -65,6 +68,13 @@ class BusStopFragment : Fragment() {
         binding.busStopCancel.setOnClickListener {
             this.findNavController().popBackStack()
         }
+
+        viewModel.point.observe(this.requireActivity(), { point ->
+            if (point != null) {
+               binding.busStopNameInput.setText(point.stopName)
+                binding.busStopTimeInput.setText(point.time)
+            }
+        })
 
         return binding.root
     }

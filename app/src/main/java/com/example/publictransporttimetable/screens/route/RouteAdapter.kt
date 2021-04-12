@@ -14,20 +14,17 @@ class RouteAdapter(
     val goToBusStopСallback: (index: Int) -> Unit
 ) : RecyclerView.Adapter<RouteAdapter.PointViewHolder>() {
 
-    var data = listOf<Point>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    private var items: List<Point> = mutableListOf()
 
-    override fun getItemCount() = data.size
-
-    override fun onBindViewHolder(holder: PointViewHolder, position: Int) {
-        val item = data[position]
-        holder.bind(item)
+    fun updateData(list: List<Point>) {
+        items = list
+        notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PointViewHolder =
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RouteAdapter.PointViewHolder =
         PointViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.list_item,
@@ -36,6 +33,11 @@ class RouteAdapter(
             )
         )
 
+    override fun getItemCount(): Int = items.size
+
+    override fun onBindViewHolder(holder: RouteAdapter.PointViewHolder, position: Int) {
+        holder.bind(items[position])
+    }
 
     inner class PointViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {

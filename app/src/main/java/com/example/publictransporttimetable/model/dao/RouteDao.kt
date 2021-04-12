@@ -1,6 +1,5 @@
 package com.example.publictransporttimetable.model.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.publictransporttimetable.model.entity.Route
 
@@ -16,12 +15,9 @@ interface RouteDao {
     @Delete
     fun delete(route: Route)
 
-    @Query("SELECT * FROM routes WHERE id = :key")
-    fun get(key: Long): Route?
-
     @Query("SELECT * FROM routes ORDER BY id DESC")
     fun getAllRoutes(): MutableList<Route>
 
-    @Query("SELECT * FROM routes ORDER BY :id DESC LIMIT 1")
+    @Query("SELECT * FROM routes WHERE id = :id")
     fun getRouteById(id: Long): Route
 }

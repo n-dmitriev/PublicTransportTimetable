@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".screens.route.RouteFragment">
 
     <LinearLayout
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linear_route">
 
         <TextView
             android:id="@+id/route_number"
@@ -40,42 +45,41 @@
             style="@style/button"
             android:text="@string/button_save"
             app:backgroundTint="#219500" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/delete_route"
-                style="@style/float_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:clickable="true"
-                android:src="@drawable/ic_baseline_clear_24"
-                app:backgroundTint="#C10000" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/add_bus_stop"
-                style="@style/float_button"
-                android:layout_gravity="bottom"
-                android:layout_marginStart="11sp"
-                android:layout_marginLeft="11sp"
-                android:clickable="true"
-                android:src="@drawable/ic_baseline_add_24"
-                app:backgroundTint="#4CAF50"
-                app:fabSize="auto" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/points_list"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintBottom_toTopOf="@+id/clear_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stop_button" />
-
-        </FrameLayout>
     </LinearLayout>
-</layout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/delete_route"
+        style="@style/float_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_clear_24"
+        app:backgroundTint="#C10000"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_bus_stop"
+        style="@style/float_button"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="11sp"
+        android:layout_marginLeft="11sp"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_add_24"
+        app:backgroundTint="#4CAF50"
+        app:fabSize="auto"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/points_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_route"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
