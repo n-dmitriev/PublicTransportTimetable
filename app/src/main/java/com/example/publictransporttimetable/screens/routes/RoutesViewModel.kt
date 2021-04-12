@@ -26,6 +26,21 @@ class RoutesViewModel(
         getRoutes()
     }
 
+    fun findRoute(search: String) {
+        uiScope.launch {
+            _routes.value = findRouteFromDB(search)
+        }
+    }
+
+    private suspend fun findRouteFromDB(search: String): MutableList<Route> {
+        return withContext(Dispatchers.IO) {
+            if (search == "")
+                return@withContext dao.getAllRoutes()
+            else
+                return@withContext dao.findRoute(search)
+        }
+    }
+
     fun getRoutes() {
         uiScope.launch {
             _routes.value = getRouteFromDB().reversed().toMutableList()

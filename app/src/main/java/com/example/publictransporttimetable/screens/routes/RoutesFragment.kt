@@ -1,20 +1,22 @@
 package com.example.publictransporttimetable.screens.routes
 
-import android.content.ContentValues
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.publictransporttimetable.R
 import com.example.publictransporttimetable.model.TimeTableDatabase
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import androidx.lifecycle.Observer
+
 
 class RoutesFragment : Fragment() {
     private lateinit var viewModel: RoutesViewModel
@@ -57,6 +59,18 @@ class RoutesFragment : Fragment() {
                     .actionRoutesToRoute(-1, false)
             )
         }
+
+        rootView.findViewById<EditText>(R.id.route_name_input).addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(editable: Editable?) {
+                viewModel.findRoute(editable.toString())
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
 
         return rootView
     }

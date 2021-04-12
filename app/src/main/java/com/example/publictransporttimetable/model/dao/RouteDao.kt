@@ -20,4 +20,7 @@ interface RouteDao {
 
     @Query("SELECT * FROM routes WHERE id = :id")
     fun getRouteById(id: Long): Route
+
+    @Query("SELECT * FROM routes WHERE name LIKE '%' || :search || '%'")
+    fun findRoute(search: String): MutableList<Route>
 }
